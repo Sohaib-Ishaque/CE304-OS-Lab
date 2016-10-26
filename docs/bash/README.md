@@ -1,4 +1,4 @@
-<center>** [Download Latest PDF Book](https://github.com/AUT-CEIT/os-lab/releases/download/1/Bash.Programming.pdf)**</center>
+ [Download Latest Book (PDF)](https://github.com/AUT-CEIT/os-lab/releases/download/1/Bash.Programming.pdf)
 
 # Expressions
 
