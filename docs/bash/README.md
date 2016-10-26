@@ -1,4 +1,4 @@
-[Download PDF Book]()
+<center>** [Download Latest PDF Book](https://github.com/AUT-CEIT/os-lab/releases/download/1/Bash.Programming.pdf)**</center>
 
 # Expressions
 
@@ -579,9 +579,9 @@ Any part of the pattern can be quoted to force it to be matched as a string.
 
 
 ----------
-Prepared By Pooya Parsa <pooya@pi0.ir>
-Amirkabir university of technology
-Last Modified: Wed, Oct 26, 2016
+Prepared By Pooya Parsa <pooya@pi0.ir>   
+Amirkabir university of technology   
+Last Modified: Wed, Oct 26, 2016   
 
 
 
