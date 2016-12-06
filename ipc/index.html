@@ -35,6 +35,14 @@
           </ul>
         </section>
         <section>
+          <h1>Taxonomy of IPC Facilities</h1>
+          <ul>
+            <li>Comminucation</li>
+            <li>Synchronization</li>
+            <li>Signals</li>
+          </ul>
+        </section>
+        <section>
           <dl>
             <dt>Communication</dt>
             <dd>These facilities are concerned with exchaning data between processes</dd>
@@ -46,6 +54,36 @@
         </section>
         <section>
           <img src="img/ipc.jpg" alt="IPC">
+        </section>
+        <section>
+          <p>The various comminucation facilities allow processes to exchange data with one another</p>
+          <dl>
+            <dt>Data-transfer facilities</dt>
+            <dd>
+            The key factor distinguishing these facilities is the notion of writing and reading.
+            In order to communicate, one process writes data to the IPC facility, and another process reads the data
+            </dd>
+            <dt>Shared memory</dt>
+            <dd>
+            Shared memory allows processes to exchange information by placing it in a region of memory that is
+            shared between the processes.
+            Shared memory can provide <strong>very fast comminucation</strong> because it doesn't require system calls or data transfer
+            between user and kernel memory.
+            </dd>
+          </dl>
+        </section>
+        <section>
+        </section>
+        <section>
+          <h1>Let's code :)</h1>
+          <h2>Pipes as a Byte Stream Data Transfer Facility</h2>
+        </section>
+        <section>
+          <pre><code class="c">
+          #include &lt unistd.h &gt
+
+          int pipe(int filedes[2]);
+          </code></pre>
         </section>
 			</div>
 		</div>
