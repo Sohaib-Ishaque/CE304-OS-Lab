@@ -73,6 +73,8 @@
           </dl>
         </section>
         <section>
+          <p>DPDK is a set of libraries and drivers for fast packet processing</p>
+          <img src="img/dpdk.png" alt="DPDK">
         </section>
         <section>
           <h1>Let's code :)</h1>
@@ -83,6 +85,26 @@
           #include &lt unistd.h &gt
 
           int pipe(int filedes[2]);
+          /*
+           * Returns 0 on success, or -1 on error
+           */
+          </code></pre>
+        </section>
+        <section>
+          <pre><code class="c">
+          #include &lt stdio.h &gt
+
+          FILE *popen(const char *command, const char *mode);
+          /*
+           * Returns file stream or NULL on error
+           * mode is w: calling process write to command
+           * mode is r: calling process read from command
+           */
+
+          int pclose(FILE *stream);
+          /*
+           * Returns termination status of child process, or -1 on error
+           */
           </code></pre>
         </section>
 			</div>
