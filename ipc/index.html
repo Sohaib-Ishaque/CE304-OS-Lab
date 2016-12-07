@@ -208,12 +208,52 @@
             </tr>
             </tbody>
           </table>
+          <p>To use the above API we must include <code>&lt sys/ipc.h &gt</code> and <code>&lt sys/shm.h &gt</code> header files.</p>
         </section>
         <section>
+          <pre><code class="c">
+          int shmget(key_t key, size_t size, int shmflg);
+          </code></pre>
+        </section>
+        <section>
+          <p><code>shmget</code> returns the shared memory ID on success.</p>
+          <ul>
+            <li>The first argument <code>key</code> must be unique. This <code>key</code> can be generated using the <code>ftok()</code> call.</li>
+            <li>The <code>size</code> argument is the size of the shared memory segment (it is rounded to the multiples of PAGE_SIZE. Usually PAGE_SIZE is 4k).</li>
+            <li>The <code>shmflg</code> is usually set with the IPC_CREAT flag. </li>
+            <li>If the <code>key</code> already exist, the <code>errno</code> is set to EEXIST and returns -1.</li>
+          </ul>
+        </section>
+        <section>
+          <h3>ICPS !?</h3>
+          <p>ipcs - show information on IPC facilities</p>
+          <dl>
+            <dt>-m, --shmems</dt>
+            <dd>Write information about active shared memory segments.</dd>
+            <dt>-q, --queues</dt>
+            <dd>Write information about active message queues.</dd>
+            <dt>-s, --semaphores</dt>
+            <dd>Write information about active semaphore sets.</dd>
+            <dt>-a, --all</dt>
+            <dd>Write information about all three resources (default).</dd>
+          </dl>
+        </section>
+        <section>
+          <pre><code class="c">
+          void *shmat(int shmid, const void *shmaddr, int shmflg);
+          </code></pre>
+        </section>
+        <section>
+          <p>The API <code>shmat</code> performs the attachement to the shared memory segment.</p>
+          <ul>
+            <li>the first argument <code>shmid</code> is the id returned from shmget.</li>
+            <li>the second argument is the attach address, and is usually kept to NULL.</li>
+            <li>the shmflg is also kept to 0 when doing read and write operations on the shared memory.</li>
+          </ul>
         </section>
         <section>
           <h3>References</h3>
-          <h5><a href="https://devnaga.gitbooks.io/linux-systems-programming-with-c-sample">Linux sSystems Programming with C Sample</a></h5>
+          <h5><a href="https://devnaga.gitbooks.io/linux-systems-programming-with-c-sample">Linux Systems Programming with C Sample</a></h5>
           <h5>Linux Programming Interface, by Michael Kerrisk, 2010</h5>
         </section>
 			</div>
