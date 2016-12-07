@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>IPC</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/solarized.css">
@@ -32,6 +32,7 @@
         <section>
           <ul>
             <li>Taxonomy of IPC Facilities</li>
+            <li>Comminucation</li>
           </ul>
         </section>
         <section>
@@ -54,6 +55,14 @@
         </section>
         <section>
           <img src="img/ipc.jpg" alt="IPC">
+        </section>
+        <section>
+          <h1>Comminucation</h1>
+          <ul>
+            <li>Pipes</li>
+            <li>FIFOs</li>
+            <li>Shared Memory</li>
+          </ul>
         </section>
         <section>
           <p>The various comminucation facilities allow processes to exchange data with one another</p>
@@ -154,6 +163,19 @@
            * Returns 0 on success, or -1 on error
            */
           </code></pre>
+        </section>
+        <section>
+          <p>
+          Although shared memory provides fast communication, this speed advantage
+          is offset by the need of synchronize operations on the shared memory.
+          </p>
+        </section>
+        <section>
+          <p>
+          Redis is an open source (BSD licensed), in-memory data structure store,
+          used as a database, cache and message broker.
+          </p>
+          <img src="img/redis-white.png" alt="Redis">
         </section>
 			</div>
 		</div>
