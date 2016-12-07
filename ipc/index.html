@@ -132,7 +132,28 @@
           </code></pre>
         </section>
         <section>
+          <p>Separating messages in a byte stream:</p>
+          <ul>
+            <li>delimiter character</li>
+            <li>header with length field</li>
+            <li>fixed-length messages</li>
+          </ul>
+          <p>Synchronization between the reader and writer processes is automatic</p>
+        </section>
+        <section>
+          <h1>Let's code :)</h1>
+          <h2>FIFOs as a Byte Stream Data Transfer Facility</h2>
+          <h2>FIFOs == Named pipes !</h2>
+        </section>
+        <section>
+          <pre><code class="c">
+          #include &lt sys/stat.h &gt
 
+          int mkfifo(const char *pathname, mode_t, mode);
+          /*
+           * Returns 0 on success, or -1 on error
+           */
+          </code></pre>
         </section>
 			</div>
 		</div>
