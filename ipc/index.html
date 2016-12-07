@@ -182,7 +182,37 @@
           <h2>Shared Memory :|</h2>
         </section>
         <section>
-          <h3></h3>
+          <table>
+            <thead>
+              <tr>
+                <th style="text-align:left">shm API</th>
+                <th style="text-align:left">description</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td style="text-align:left">shmget</td>
+              <td style="text-align:left">allocate shared memory segment</td>
+            </tr>
+            <tr>
+              <td style="text-align:left">shmat</td>
+              <td style="text-align:left">attach to the shared memory with the given shared memory identifier</td>
+            </tr>
+            <tr>
+              <td style="text-align:left">shmctl</td>
+              <td style="text-align:left">perform control operations on the shared memory segment</td>
+            </tr>
+            <tr>
+              <td style="text-align:left">shmdt</td>
+              <td style="text-align:left">detaches from the shared memory</td>
+            </tr>
+            </tbody>
+          </table>
+        </section>
+        <section>
+        </section>
+        <section>
+          <h3>References</h3>
           <h5><a href="https://devnaga.gitbooks.io/linux-systems-programming-with-c-sample">Linux sSystems Programming with C Sample</a></h5>
           <h5>Linux Programming Interface, by Michael Kerrisk, 2010</h5>
         </section>
