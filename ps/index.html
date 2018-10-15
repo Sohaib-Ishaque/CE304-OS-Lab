@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Processes</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/league.css">
+
+    <!-- Parham theme! -->
+    <link rel="stylesheet" href="../css/theme.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+          <h1>Processes</h1>
+          <h5>OS Laboratory Team</h5>
+          <span>Fall 2018</span>
+        </section>
+        <section>
+          <h3>The Process</h3>
+          <h2>A program in <span class="orange-select">execution</span></h2>
+        </section>
+        <section>
+          <h2>Memory Layout</h2>
+          <dl>
+            <dt class="green-select">Text section</dt>
+            <dd>The executable code</dd>
+            <dt class="green-select">Data section</dt>
+            <dd>Global variables</dd>
+            <dt class="green-select">Heap section</dt>
+            <dd>Memory that is dynamically allocated during program run time</dd>
+            <dt class="green-select">Stack section</dt>
+            <dd>Temporary data storage when invoking functions (such as function parameters, return address, and local variables)</dd>
+          </dl>
+        </section>
+        <section>
+          <img src="img/ps_mem_layout.png" alt="ps_mem_layout" />
+        </section>
+        <section>
+          <h1>Let's code :)</h1>
+        </section>
+        <section>
+          <pre><code class="c">
+          #include &lt;stdlib.h&gt;
+          #include &lt;stdio.h&gt;
+
+          int x;
+          int y = 15;
+
+          int main(int argc, char *argv[]) {
+            int *values;
+            int i;
+
+            values = (int *) malloc(sizeof(int) * 5);
+
+            for (i = 0; i &lt; 5; i++) {
+              values[i] = i;
+            }
+
+            return 0;
+          }
+          </code></pre>
+        </section>
+        <section>
+          <pre><code class="sh">
+          # the size (in bytes) of some of these sections
+          $ size program_name
+          </code></pre>
+        </section>
+        <section>
+          <h2>Process State</h2>
+          <dl>
+            <dt class="green-select">New</dt>
+            <dd>The process is being created</dd>
+            <dt class="green-select">Running</dt>
+            <dd>Instruction are being executed</dd>
+            <dt class="green-select">Waiting</dt>
+            <dd>The process is waiting for some event to occur (such as an I/O completion or reception of a signal)
+            <dt class="green-select">Ready</dt>
+            <dd>The process is waiting to be assigned to a processor</dd>
+            <dt class="green-select">Teminated</dt>
+            <dd>The process has finished execution</dd>
+          </dl>
+        </section>
+        <section>
+          <img src="img/process_state_diagram.png" alt="process_state_diagram" />
+        </section>
+        <section>
+          <h2>Operations on Processes</h2>
+          <p>
+            The processes in the must systems can execute <span class="orange-select">concurrently</span>,
+            and they may be created and deleted dynamically.
+        </section>
+        <section>
+          <h2>Concurrent vs Parallel</h2>
+          <h4>Based on <span class="stackoverflow">Stackoverflow</span> answer</h4>
+          <p>
+            If you program using concurrent programming, it's not necessarily going to be executed as such (parallel execution),
+            since it depends on the machine.
+          </p>
+          <pre><code>
+              --  --  --
+           /              \
+       ---- --  --  --  -- ----
+           ------
+          /      \
+       --------------
+          </code></pre>
+        </section>
+        <section>
+          <h1>Let's code :)</h1>
+        </section>
+        <section>
+          <pre><code class="sh">
+          # -l Display information associated with the following keywords: uid, pid, ppid, ...
+          # -e Display information about other uesrs' processes, including those without controlling terminals.
+          ps -el
+          </code></pre>
+        </section>
+        <section>
+          <pre><code class="sh">
+          pstree
+          </code></pre>
+        </section>
+        <section>
+          <p>When a process creates a new process, two possibilities for execution</p>
+          <ul>
+            <li>The parent continues to execute concurrently with its children</li>
+            <li>The parent waits until some or all of its chidlren have terminated</li>
+          </ul>
+        </section>
+        <section>
+          <p>There are also two address-space possibilities for the new process</p>
+          <ul>
+            <li>The child process is a duplicate of the parent process</li>
+            <li>The child process has a new program loaded into it</li>
+          </ul>
+        </section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+        history: true,
+        slideNumber: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
