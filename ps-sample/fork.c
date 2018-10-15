@@ -20,8 +20,11 @@ int say_hello(const char *name)
 {
 	int i;
 
-	for (i = 0; i < 4; i++)
+	for (i = 0; i < 4; i++) {
 		printf("hello %s\n", name);
+  }
+
+  return 0;
 }
 
 int main(int argc, char *argv[])
@@ -36,7 +39,7 @@ int main(int argc, char *argv[])
 		say_hello("child");
 		exit(0);
 	} else {
-		sleep(0.5);
+		sleep(1);
 		say_hello("parent");
 	}
 }
