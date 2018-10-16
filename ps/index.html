@@ -162,12 +162,28 @@
               <li>System call fork() is used to create processes. It takes no arguments and returns a process ID</li>
               <li>The purpose of fork() is to create a new process, which becomes the child process of the caller.</li>
             </ul>
-            <li class="orange-select">vfork</li>
             <li class="green-select">exec</li>
             <ul>
               <li>exec runs an executable file in the context of an already existing process, replacing the previous executable.</li>
             </ul>
             <li class="cyan-select">wait</li>
+            <ul>
+              <li>wait for state changes in a child of the calling process</li>
+              <li>obtain information about the child whose state has changed</li>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <ul>
+            <li class="orange-select">vfork</li>
+            <ul>
+              <li>The vfork() function has the same effect as fork()</li>
+              <li>except that the behavior is undefined if the process created by vfork():</li>
+              <ol>
+                <li>modifies any data other than a variable of type pid_t used to store the return value from vfork()</li>
+                <li>returns from the function in which vfork() was called</li>
+                <li>calls any other function before successfully calling _exit(2) or one of the exec(3) family of functions.</li>
+            </ol>
           </ul>
         </section>
         <section>
