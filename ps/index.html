@@ -1,33 +1,33 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Processes</title>
+    <title>Processes</title>
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/league.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/league.css">
 
     <!-- Parham theme! -->
     <link rel="stylesheet" href="../css/theme.css">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
           <h1 style="color: #ffea00">Processes</h1>
           <h5>OS Laboratory Team</h5>
           <span class="cyan-select">Fall 2018</span>
@@ -157,37 +157,67 @@
         </section>
         <section>
           <ul>
-            <li>fork</li>
-            <li>vfork</li>
-            <li>exec</li>
-            <li>wait</li>
+            <li class="orange-select">fork</li>
+            <ul>
+              <li>System call fork() is used to create processes. It takes no arguments and returns a process ID</li>
+              <li>The purpose of fork() is to create a new process, which becomes the child process of the caller.</li>
+            </ul>
+            <li class="orange-select">vfork</li>
+            <li class="green-select">exec</li>
+            <li class="cyan-select">wait</li>
           </ul>
         </section>
         <section>
+          <pre><code class="c">
+          #include  &lt;stdio.h&gt;
+          #include  &lt;unistd&gt;
+
+          #define   MAX_COUNT  200
+          #define   BUF_SIZE   100
+
+          int  main(int argc, const char *argv[]) {
+            pid_t  pid;
+            int    i;
+            char   buf[BUF_SIZE];
+
+            fork();
+            pid = getpid();
+            for (i = 1; i &le; MAX_COUNT; i++) {
+              sprintf(buf, "This line is from pid %d, value = %d\n", pid, i);
+              write(1, buf, strlen(buf));
+            }
+          </code></pre>
+        </section>
+        <section>
           <h2>fork() system call</h2>
+          <img src="img/fork_1.jpg" alt="fork_1"><br>
+          <img src="img/fork_2.jpg" alt="fork_2">
+        </section>
+        <section>
+          <h2>fork() and wait() system call</h2>
           <img src="img/process_creation_os.jpg" alt="process_creation_os" />
         </section>
         <section>
           <h2>Zombieeeee</h2>
           <img src="img/zombie_process.jpg" alt="zombie_process" height="500px" />
         </section>
-			</div>
-		</div>
+      </div>
+    </div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
 
-		<script>
-			// More info https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
+    <script>
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
         history: true,
         slideNumber: true,
 
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+  </body>
 </html>
