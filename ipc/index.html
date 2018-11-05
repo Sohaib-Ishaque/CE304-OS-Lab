@@ -1,33 +1,38 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>IPC</title>
+    <title>IPC</title>
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/solarized.css">
+    <link rel="stylesheet" href="../css/reveal.css">
+    <link rel="stylesheet" href="../css/theme/league.css">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Parham theme! -->
+    <link rel="stylesheet" href="../css/theme.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>
-          <h1>Introduction to Interprocess Communication</h1>
-          <h5>Parham Alvani @1995parham</h5>
-          <span>Fall 2016</span>
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1 style="color: #ffea00">
+            Introduction to Interprocess Communication
+          </h1>
+          <h5>OS Laboratory Team</h5>
+          <span class="cyan-select">Fall 2018</span>
         </section>
         <section>
           <ul>
@@ -89,23 +94,23 @@
           <p>We can further break data-transfer facilities into the following subcategories</p>
           <ul>
             <li>
-            Byte Stream
-            <ul>
-              <li>pipes</li>
-              <li>FIFOs</li>
-              <li>stream sockets (TCP)</li>
-            </ul>
+              Byte Stream
+              <ul>
+                <li>pipes</li>
+                <li>FIFOs</li>
+                <li>stream sockets (TCP)</li>
+              </ul>
             </li>
             <li>
-            Message
-            <ul>
-              <li>System V message queue</li>
-              <li>POSIX message queues</li>
-              <li>datagram sockets (UDP)</li>
-            </ul>
+              Message
+              <ul>
+                <li>System V message queue</li>
+                <li>POSIX message queues</li>
+                <li>datagram sockets (UDP)</li>
+              </ul>
             </li>
             <li>
-            Pseudoterminals
+              Pseudoterminals
             </li>
           </ul>
         </section>
@@ -115,7 +120,7 @@
         </section>
         <section>
           <pre><code class="c">
-          #include &lt unistd.h &gt
+          #include &lt;unistd.h&gt;
 
           int pipe(int filedes[2]);
           /*
@@ -125,7 +130,7 @@
         </section>
         <section>
           <pre><code class="c">
-          #include &lt stdio.h &gt
+          #include &lt;stdio.h&gt;
 
           FILE *popen(const char *command, const char *mode);
           /*
@@ -141,13 +146,13 @@
           </code></pre>
         </section>
         <section>
-          <p>Separating messages in a byte stream:</p>
+          <p><span class="green-select">Separating messages</span> in a byte stream:</p>
           <ul>
             <li>delimiter character</li>
             <li>header with length field</li>
             <li>fixed-length messages</li>
           </ul>
-          <p>Synchronization between the reader and writer processes is automatic</p>
+          <p><span class="orange-select">Synchronization</span> between the reader and writer processes is automatic</p>
         </section>
         <section>
           <h1>Let's code :)</h1>
@@ -156,7 +161,7 @@
         </section>
         <section>
           <pre><code class="c">
-          #include &lt sys/stat.h &gt
+          #include &lt;sys/stat.h&gt;
 
           int mkfifo(const char *pathname, mode_t, mode);
           /*
@@ -166,14 +171,14 @@
         </section>
         <section>
           <p>
-          Although shared memory provides fast communication, this speed advantage
-          is offset by the need of synchronize operations on the shared memory.
+            Although shared memory provides fast communication, this speed advantage
+            is offset by the need of synchronize operations on the shared memory.
           </p>
         </section>
         <section>
           <p>
-          Redis is an open source (BSD licensed), in-memory data structure store,
-          used as a database, cache and message broker.
+            Redis is an open source (BSD licensed), in-memory data structure store,
+            used as a database, cache and message broker.
           </p>
           <img src="img/redis-white.png" alt="Redis">
         </section>
@@ -190,22 +195,22 @@
               </tr>
             </thead>
             <tbody>
-            <tr>
-              <td style="text-align:left">shmget</td>
-              <td style="text-align:left">allocate shared memory segment</td>
-            </tr>
-            <tr>
-              <td style="text-align:left">shmat</td>
-              <td style="text-align:left">attach to the shared memory with the given shared memory identifier</td>
-            </tr>
-            <tr>
-              <td style="text-align:left">shmctl</td>
-              <td style="text-align:left">perform control operations on the shared memory segment</td>
-            </tr>
-            <tr>
-              <td style="text-align:left">shmdt</td>
-              <td style="text-align:left">detaches from the shared memory</td>
-            </tr>
+              <tr>
+                <td style="text-align:left">shmget</td>
+                <td style="text-align:left">allocate shared memory segment</td>
+              </tr>
+              <tr>
+                <td style="text-align:left">shmat</td>
+                <td style="text-align:left">attach to the shared memory with the given shared memory identifier</td>
+              </tr>
+              <tr>
+                <td style="text-align:left">shmctl</td>
+                <td style="text-align:left">perform control operations on the shared memory segment</td>
+              </tr>
+              <tr>
+                <td style="text-align:left">shmdt</td>
+                <td style="text-align:left">detaches from the shared memory</td>
+              </tr>
             </tbody>
           </table>
           <p>To use the above API we must include <code>&lt sys/ipc.h &gt</code> and <code>&lt sys/shm.h &gt</code> header files.</p>
@@ -256,22 +261,22 @@
           <h5><a href="https://devnaga.gitbooks.io/linux-systems-programming-with-c-sample">Linux Systems Programming with C Sample</a></h5>
           <h5>Linux Programming Interface, by Michael Kerrisk, 2010</h5>
         </section>
-			</div>
-		</div>
+      </div>
+    </div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+    <script src="../lib/js/head.min.js"></script>
+    <script src="../js/reveal.js"></script>
 
-		<script>
-			// More info https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				history: true,
+    <script>
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        history: true,
 
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+  </body>
 </html>
