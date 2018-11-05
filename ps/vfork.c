@@ -18,23 +18,22 @@
 
 int x = 10;
 
-int main(int argc, char *argv[])
-{
-	pid_t pid;
-	int y = 5;
+int main(int argc, char *argv[]) {
+  pid_t pid;
+  int y = 5;
 
-	pid = vfork();
+  pid = vfork();
 
-	if (pid < 0) {
-		perror("vfork():");
-	} else if (pid == 0) {
-		x++;
-		y++;
-		exit(0);
-	} else {
-		printf("parent\n");
-		printf("x = %d - y = %d\n", x, y);
-	}
-
-	printf("x = %d - y = %d\n", x, y);
+  if (pid < 0) {
+    perror("vfork():"); // prints error when vfork fails
+  } else if (pid == 0) {
+    x++; // changes the values of x and y in child space.
+    y++;
+    printf("x = %d - y = %d\n", x, y);
+    exit(0);
+  } else {
+    sleep(10); // waits manually for child process.
+    printf("parent\n"); // prints values of x and y in parent space.
+    printf("x = %d - y = %d\n", x, y);
+  }
 }
