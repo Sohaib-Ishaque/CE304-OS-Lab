@@ -27,15 +27,19 @@ int main (int argc, char *argv[]) {
 
   scanf("%d", &n);
 
-  if (pipe(file_des) == -1) // handles pipe error
+  if (pipe(file_des) == -1) { // handles pipe error
     perror("pipe()");
+    exit(EXIT_FAILURE);
+  }
 
   switch (fork()) {
     case -1: // handles fork error
       perror("fork()");
     case 0: // child
-      if (close(file_des[0]) == -1) // close reading side of pipe
+      if (close(file_des[0]) == -1) { // close reading side of pipe
         perror("close()");
+        exit(EXIT_FAILURE);
+      }
 
       /* child writes to pipe */
       FILE *fw;
@@ -46,8 +50,10 @@ int main (int argc, char *argv[]) {
       break;
     default: // parent
 
-      if (close(file_des[1]) == -1) // close writing side of pipe
+      if (close(file_des[1]) == -1) { // close writing side of pipe
         perror("close()");
+        exit(EXIT_FAILURE);
+      }
 
       /* parent reads from pipe */
       FILE *fr;
