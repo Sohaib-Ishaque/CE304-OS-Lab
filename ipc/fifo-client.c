@@ -31,6 +31,6 @@ int main(int argc, char *argv[]) {
     scanf("%d", &n);
     printf("You entered: %d\n", n);
     fprintf(server, "%d\n", n); // writes user input to fifo
-    fflush(server);
+    fflush(server); // and flushes it
   } while (n != 0);
 }
