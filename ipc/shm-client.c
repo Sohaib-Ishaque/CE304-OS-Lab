@@ -12,6 +12,7 @@
  * Copyright (c)  2018 Parham Alvani.
  */
 
+#include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
 #include <unistd.h>
@@ -27,7 +28,7 @@ int main(int argc, const char *argv[]) {
   if (shmid < 0) {
     fprintf(stderr, "failed to create shm segment\n");
     perror("shmget");
-    return -1;
+    exit(EXIT_FAILURE);
   }
 
   printf("found %d\n", shmid);
@@ -36,7 +37,7 @@ int main(int argc, const char *argv[]) {
   if ((long long) addr == -1) {
     fprintf(stderr, "failed to attach\n");
     perror("shmat");
-    return -1;
+    exit(EXIT_FAILURE);
   }
 
   printf("got %p\n", addr);
