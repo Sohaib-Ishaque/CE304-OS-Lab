@@ -26,11 +26,12 @@ int main(int argc, char *argv[]) {
 
   if (pid < 0) {
     perror("vfork():"); // prints error when vfork fails
+    exit(EXIT_FAILURE);
   } else if (pid == 0) {
     x++; // changes the values of x and y in child space.
     y++;
     printf("x = %d - y = %d\n", x, y);
-    exit(0);
+    exit(EXIT_SUCCESS); // IMPORTANT
   } else {
     printf("parent\n"); // prints values of x and y in parent space.
     printf("x = %d - y = %d\n", x, y);
