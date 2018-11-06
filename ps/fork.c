@@ -31,12 +31,13 @@ int main(int argc, char *argv[]) {
 
   pid = fork();
 
-  if (pid < 0) {
+  if (pid < 0) { // handles fork error
     perror("fork()");
-  } else if (pid == 0) {
+    exit(EXIT_FAILURE);
+  } else if (pid == 0) { // child process
     say_hello("child");
-    exit(0);
-  } else {
+    exit(EXIT_SUCCESS);
+  } else { // parent process
     sleep(1);
     say_hello("parent");
   }
