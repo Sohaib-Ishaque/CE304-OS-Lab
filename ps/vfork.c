@@ -32,7 +32,6 @@ int main(int argc, char *argv[]) {
     printf("x = %d - y = %d\n", x, y);
     exit(0);
   } else {
-    sleep(10); // waits manually for child process.
     printf("parent\n"); // prints values of x and y in parent space.
     printf("x = %d - y = %d\n", x, y);
   }
