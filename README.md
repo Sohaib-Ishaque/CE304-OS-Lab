@@ -5,7 +5,7 @@
 Operating Systems Laboratory Materials. In this course we try to do some C and system programming with tase of bash in Ubuntu.
 
 ## Syllabus
-- Intoduction
+- Introduction
 - Processes
 - Introduction to Bash (Taher Ahmadi)
 - Inter Process Communication
