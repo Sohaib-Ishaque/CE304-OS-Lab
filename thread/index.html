@@ -47,10 +47,43 @@
           </ul>
         </section>
         <section>
+          <ul>
+            <li><span class="orange-select">pthread_create</span> creates a new thread and makes it executable</li>
+            <li>This routine can be called any number of times from anywhere within your code</li>
+          </ul>
+        </section>
+        <section>
+          <h1>Let's code :)</h1>
+          <h2>Thread Creation</h2>
+        </section>
+        <section>
           <pre><code class="c">
           #include &lt;pthread.h&gt;
 
           int pthread_create(pthread_t *thread, const pthread_att_t *attr, void *(*start_routine) (void *), void *arg)
+          </code></pre>
+        </section>
+        <section>
+          <pre><code class="sh">
+          gcc -pthread
+          </code></pre>
+        </section>
+        <section>
+          <h1>Let's code :)</h1>
+          <h2>Thread Synchronization</h2>
+        </section>
+        <section>
+          <pre><code class="c">
+          #include &lt;pthread.h&gt;
+
+          int pthread_join(pthread_t thread, void **retval);
+          </code></pre>
+        </section>
+        <section>
+          <pre><code class="c">
+          pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+          pthread_mutex_lock( &amp;mutex );
+          pthread_mutex_unlock( &amp;mutex );
           </code></pre>
         </section>
       </div>
