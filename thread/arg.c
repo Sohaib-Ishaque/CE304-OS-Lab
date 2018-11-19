@@ -19,7 +19,7 @@
 #define NUM_THREADS	5
 
 // print_parent_stack_address is a function that is called by pthread within a new thread.
-// this function print and change given value by its refrence. please consider that value
+// this function print and change given value by its reference. please consider that the value
 // is defined in parent stack.
 // pthread functions input and output have void* format.
 void *print_parent_stack_address(void *value) {
