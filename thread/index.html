@@ -48,8 +48,28 @@
         </section>
         <section>
           <ul>
-            <li><span class="orange-select">pthread_create</span> creates a new thread and makes it executable</li>
-            <li>This routine can be called any number of times from anywhere within your code</li>
+            <li>
+              Implementations of the API are available on many Unix-like POSIX-conformant operating systems
+              such as FreeBSD, NetBSD, OpenBSD,
+              <span class="green-select">Linux</span>, <span class="green-select">Mac OS X</span>, <span class="green-select">Android</span>,
+              Solaris and AUTOSAR Adaptive, typically bundled as a library <span class="orange-select">libpthread</span>.
+            </li>
+            <li>
+              DR-DOS and Microsoft Windows implementations also exist: within the SFU/SUA subsystem which provides a native implementation
+              of a number of POSIX APIs, and also within third-party packages such as pthreads-w32,
+              which implements pthreads on top of existing Windows API.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <ul>
+            <li><span class="orange-select">LinuxThreads</span> was a partial implementation of POSIX Threads introduced in 1996.</li>
+            <li>It has been superseded by the <span class="green-select">Native POSIX Thread Library (NPTL)</span></li>
+            <li>
+              NPTL uses a similar approach to LinuxThreads,
+              in that the primary abstraction known by the kernel is still a process,
+              and new threads are created with the <span class="cyan-select">clone()</span> system call (called from the NPTL library).
+            </li>
           </ul>
         </section>
         <section>
@@ -62,6 +82,12 @@
 
           int pthread_create(pthread_t *thread, const pthread_att_t *attr, void *(*start_routine) (void *), void *arg)
           </code></pre>
+        </section>
+        <section>
+          <ul>
+            <li><span class="orange-select">pthread_create</span> creates a new thread and makes it executable</li>
+            <li>This routine can be called any number of times from anywhere within your code</li>
+          </ul>
         </section>
         <section>
           <pre><code class="sh">
@@ -81,9 +107,56 @@
         </section>
         <section>
           <pre><code class="c">
+          #include &lt;pthread.h&gt;
+
           pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
           pthread_mutex_lock( &amp;mutex );
           pthread_mutex_unlock( &amp;mutex );
+          </code></pre>
+        </section>
+        <section>
+          <pre><code class="c">
+          #include &lt;semaphore.h&gt;
+
+          sem_t sem_name;
+          sem_init(&amp;sem_name, 0, 10);
+          sem_wait(&amp;sem_name);
+          sem_post(&amp;sem_name);
+          </code></pre>
+       </section>
+        <section>
+          <pre><code class="c">
+          int sem_init(sem_t *sem, int pshared, unsigned int value);
+          </code></pre>
+          <ul>
+            <li><span class="orange-select">sem</span> points to a semaphore object to initialize</li>
+            <li><span class="cyan-select">pshared</span> is a flag indicating whether or not the semaphore should be shared with fork()ed processes. LinuxThreads does not currently support shared semaphores</li>
+            <li><span class="green-select">value</span> is an initial value to set the semaphore to</li>
+          </ul>
+        </section>
+        <section>
+          <ul>
+            <li>
+              If the value of the semaphore is negative, the calling process blocks;
+              one of the blocked processes wakes up when another process calls sem_post.
+            </li>
+          </ul>
+          <pre><code class="c">
+          int sem_wait(sem_t *sem);
+          </code></pre>
+          <ul>
+            <li>It increments the value of the semaphore and wakes up a blocked process waiting on the semaphore, if any.</li>
+          </ul>
+          <pre><code class="c">
+          int sem_post(sem_t *sem);
+          </code></pre>
+        </section>
+        <section>
+          <ul>
+            <li>destroys the semaphore; no threads should be waiting on the semaphore if its destruction is to succeed.</li>
+          </ul>
+          <pre><code class="c">
+          int sem_destroy(sem_t *sem);
           </code></pre>
         </section>
       </div>
