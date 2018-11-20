@@ -110,6 +110,12 @@
           #include &lt;pthread.h&gt;
 
           pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+          pthread_mutex_init( &amp;mutex, NULL );
+          </code></pre>
+
+          <pre><code class="c">
+          #include &lt;pthread.h&gt;
+
           pthread_mutex_lock( &amp;mutex );
           pthread_mutex_unlock( &amp;mutex );
           </code></pre>
