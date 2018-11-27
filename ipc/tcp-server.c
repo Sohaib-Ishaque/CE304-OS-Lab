@@ -19,13 +19,12 @@
 #include <sys/socket.h>
 #include <stdlib.h>
 #include <netinet/in.h>
+#include <arpa/inet.h>
 #include <string.h>
 
 #define PORT 8080
 
 int main(int argc, char const *argv[]) {
-  int new_socket, valread;
-  int opt = 1;
   char buffer[1024] = {0};
   char *hello = "Hello from server";
 
@@ -44,24 +43,37 @@ int main(int argc, char const *argv[]) {
   const int addrlen = sizeof(addrlen);
 
   // binding
-  if (bind(server_fd, (struct sockaddr *)&address, sizeof(address))<0) {
+  if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
     perror("bind failed");
     exit(EXIT_FAILURE);
   }
 
-  // listening
+  // listening on server socket with backlog size 3.
   if (listen(server_fd, 3) < 0) {
     perror("listen");
     exit(EXIT_FAILURE);
   }
+  printf("Listen on %s:%d\n", inet_ntoa(address.sin_addr), ntohs(address.sin_port));
 
-  if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen))<0) {
+  // accepting client
+  // accept returns client socket and fills given address and addrlen with client address information.
+  int client_socket, valread;
+  if ((client_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen)) < 0) {
     perror("accept");
     exit(EXIT_FAILURE);
   }
-  valread = read( new_socket , buffer, 1024);
-  printf("%s\n",buffer );
-  send(new_socket , hello , strlen(hello) , 0 );
+  printf("Hello client %s:%d\n", inet_ntoa(address.sin_addr), ntohs(address.sin_port));
+
+  // reads a buffer with maximum size 1024 from socket.
+  valread = read(client_socket, buffer, 1024);
+  if (valread < 0) {
+    perror("read");
+    exit(EXIT_FAILURE);
+  }
+  printf("(s = %d) %s\n", valread, buffer);
+
+  // writes to client socket
+  send(client_socket, hello, strlen(hello), 0);
   printf("Hello message sent\n");
   return 0;
 }
