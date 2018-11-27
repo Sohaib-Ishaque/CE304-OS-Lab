@@ -40,7 +40,7 @@ int main(int argc, char const *argv[]) {
   address.sin_family = AF_INET;
   address.sin_addr.s_addr = INADDR_ANY;
   address.sin_port = htons(PORT); // host to network -- coverts the ending of the given integer
-  const int addrlen = sizeof(addrlen);
+  const int addrlen = sizeof(address);
 
   // binding
   if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
