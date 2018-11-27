@@ -10,3 +10,5 @@ Operating Systems Laboratory Materials. In this course we try to do some C and s
 - Introduction to Bash (Taher Ahmadi)
 - Inter Process Communication
 - Threads
+- Thread Synchronization
+- TCP Client & Server
