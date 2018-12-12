@@ -1,4 +1,4 @@
-all: ps ipc
+all: ps ipc thread
 
 CFLAGS=-Wall -O0 -g -std=gnu11
 
