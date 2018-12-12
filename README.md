@@ -18,6 +18,7 @@ Operating Systems Laboratory Materials. In this course we try to do some C and s
 Students built a synchronized queue earlier. They use this with the sample client-server application,
 that they learned it in the TCP programming session, for adding a pipeline to the requests handling stage
 of their TCP's client-server application.
+
 As an example when a request comes, the program accepts then adds it into the queue.
 Handlers are in the running state and read the shared queue within a loop, therefore,
 they read the request in the random fashion next send its response.
