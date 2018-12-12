@@ -10,7 +10,7 @@ thread: thread/hello.out thread/arg.out thread/retval.out
 
 # each .c file compiles to a stanalone .out executable
 %.out: %.c
-	$(CC) -o $@ $< $(CFLAGS)
+	$(CC) -o $@ $< $(CFLAGS) -lpthread
 
 .PHONY: clean
 clean:
