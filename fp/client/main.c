@@ -42,6 +42,10 @@ int main(int argc, char const *argv[]) {
   char buffer[1024] = {0};
   int valread;
   valread = read(sock, buffer, 1024);
+  if (valread < 0) {
+    perror("read");
+    return -1;
+  }
   printf("%s\n", buffer);
   return 0;
 }
