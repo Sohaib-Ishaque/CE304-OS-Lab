@@ -18,13 +18,11 @@ int server_fd;
 
 // handler handles each incoming connection.
 // It sends response and closes the connection.
-void *handler(void *value) {	
+void *handler(void *value) {
   char *hello = "Hello from server";
-  while(1)
-  {
+  while (1) {
     int client_socket = slice_pop(ms);
-    if(client_socket != -1)
-    {
+    if (client_socket != -1) {
       // writes to the client socket
       send(client_socket, hello, strlen(hello), 0);
       printf("Hello message sent\n");
@@ -37,7 +35,7 @@ void *acceptor(void *value) {
   struct sockaddr_in address;
   int addrlen;
 
-  while(1) {
+  while (1) {
     // accepting client
     // accept returns client socket and fills given address and addrlen with client address information.
     int client_socket;
