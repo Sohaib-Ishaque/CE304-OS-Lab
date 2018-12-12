@@ -55,6 +55,10 @@ int main(int argc, char const *argv[]) {
     send(sock, hello, strlen(hello), 0);
     printf("Hello message sent\n");
     valread = read(sock, buffer, 1024);
+    if (valread < 0) {
+      perror("read");
+      return -1;
+    }
     printf("%s\n", buffer);
     return 0;
 }
