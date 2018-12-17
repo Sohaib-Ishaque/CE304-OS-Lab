@@ -1,0 +1,88 @@
+\documentclass[12pt]{exam}
+\usepackage[utf8]{inputenc}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+
+\newcommand{\class}{Operating System Laboratory}
+\newcommand{\term}{Fall 2018}
+\newcommand{\examnum}{Final}
+\newcommand{\examdate}{18 Dec 2018}
+\newcommand{\timelimit}{30 Minutes}
+
+\pagestyle{head}
+\firstpageheader{}{}{}
+\runningheader{\class}{\examnum\ - Page \thepage\ of \numpages}{\examdate}
+\runningheadrule
+
+
+\begin{document}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+\textbf{\class} & \textbf{Name:} & \makebox[2in]{\hrulefill}\\
+\textbf{\term} & \textbf{Student Number:} & \makebox[2in]{\hrulefill}\\
+\textbf{\examnum} &&\\
+\textbf{\examdate} &&\\
+\textbf{Time Limit: \timelimit}
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+
+This exam contains \numpages\ pages (including this cover page) and \numquestions\ questions.\\
+Total of points is \numpoints.
+
+Keep clam and take your exam. Please consider C programming language and Linux operating system.
+
+\begin{center}
+Grade Table (for teacher use only)\\
+\addpoints
+\gradetable[v][questions]
+\end{center}
+
+\noindent
+\rule[2ex]{\textwidth}{2pt}
+
+\begin{questions}
+
+\question[2] What is the difference between interrupt and trap?
+\makeemptybox{\fill}
+\addpoints
+
+\newpage
+
+\question[1] A hardware device wishes to transfer information to the main memory of the
+computer for access by an application. Which of the following mechanisms \textbf{cannot} be used
+to this purpose?
+\begin{choices}
+        \choice direct memory access
+        \choice polled mode operation
+        \choice programmed I/O
+        \choice zombie processes
+\end{choices}
+
+\question[1] Which one of the following system calls is related to process creation?
+\begin{choices}
+        \choice execl
+        \choice read
+        \choice write
+        \choice send
+\end{choices}
+
+\question[1] Which one of the following functions can be used as a thread handler?
+\begin{choices}
+        \choice void *handler(void *)
+        \choice int handler(int, int)
+        \choice void *handler(char *, int *)
+        \choice boolean handler(string, string)
+\end{choices}
+
+
+\question[0]
+What do you think about our class and this exam? Do you consider our class and topics
+useful?
+\makeemptybox{2in}
+
+\end{questions}
+
+\end{document}
