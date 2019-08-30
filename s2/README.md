@@ -1,6 +1,7 @@
 # Linux Kernel Modules
 
 > Do you pine (to want or miss something or someone very much) for the days when men were men and wrote their own device drivers?
+>
 > Linus Torvalds
 
 ## Requirements
