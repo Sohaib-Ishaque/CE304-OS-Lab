@@ -4,8 +4,10 @@
 Operating Systems Laboratory Materials. In this course we try to do some C and system programming in Ubuntu.
 
 ## Syllabus
-1. Introduction to Bash (Taher Ahmadi)
+1. Introduction to Linux
 2. [Linux Kernel Module](s2/)
+3. Bash Programming
+4. Threads and Processes
 
 ## Final Project
 Students built a synchronized queue earlier. They use this with the sample client-server application,
