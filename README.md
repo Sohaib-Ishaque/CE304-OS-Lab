@@ -1,19 +1,11 @@
 # OS-Lab
-[![Travis branch](https://img.shields.io/travis/com/AUT-CEIT/OS-Lab/master.svg?style=flat-square)](https://travis-ci.com/AUT-CEIT/OS-Lab)
 
 ## Introduction
-Operating Systems Laboratory Materials. In this course we try to do some C and system programming with tase of bash in Ubuntu.
+Operating Systems Laboratory Materials. In this course we try to do some C and system programming in Ubuntu.
 
 ## Syllabus
-1. Introduction
-2. Processes
-3. Introduction to Bash (Taher Ahmadi)
-4. Inter Process Communication
-5. Threads
-6. Thread Synchronization
-7. TCP Client & Server
-8. Final Project
-9. Theoretical Exam
+1. Introduction to Bash (Taher Ahmadi)
+2. [Linux Kernel Module](s2/)
 
 ## Final Project
 Students built a synchronized queue earlier. They use this with the sample client-server application,
