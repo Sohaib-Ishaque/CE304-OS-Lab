@@ -16,18 +16,9 @@
 #include <unistd.h>
 #include <sys/types.h>
 
-int say_hello(const char *name) {
-  int i;
-
-  for (i = 0; i < 4; i++) {
-    printf("hello %s\n", name);
-  }
-
-  return 0;
-}
-
 int main(int argc, char *argv[]) {
   pid_t pid;
+  int x = 1;
 
   pid = fork();
 
@@ -35,10 +26,9 @@ int main(int argc, char *argv[]) {
     perror("fork()");
     exit(EXIT_FAILURE);
   } else if (pid == 0) { // child process
-    say_hello("child");
-    exit(EXIT_SUCCESS);
+    printf("child has x = %d\n", ++x);
   } else { // parent process
-    sleep(1);
-    say_hello("parent");
+    printf("parent has x = %d\n", --x);
   }
+  exit(EXIT_SUCCESS);
 }
