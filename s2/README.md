@@ -35,3 +35,19 @@ sudo rmmod hello
 ```
 [106957.018862] Goodbye, i am unloading
 ```
+
+## Points
+
+In C, functions are global by default.
+The `static` keyword before a function name makes it static.
+For example, below function fun() is static.
+
+```c
+static int fun(void)
+{
+  printf("I am a static function "); 
+}
+```
+
+Unlike global functions in C,
+access to static functions is restricted to the file where they are declared.
