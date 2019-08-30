@@ -37,17 +37,5 @@ sudo rmmod hello
 ```
 
 ## Points
-
-In C, functions are global by default.
-The `static` keyword before a function name makes it static.
-For example, below function fun() is static.
-
-```c
-static int fun(void)
-{
-  printf("I am a static function "); 
-}
-```
-
-Unlike global functions in C,
-access to static functions is restricted to the file where they are declared.
+- [Static functions in C](https://www.geeksforgeeks.org/what-are-static-functions-in-c/)
+- [What does __init mean in the Linux kernel code?](https://stackoverflow.com/questions/8832114/what-does-init-mean-in-the-linux-kernel-code)
