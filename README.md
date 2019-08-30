@@ -8,6 +8,10 @@ Operating Systems Laboratory Materials. In this course we try to do some C and s
 2. [Linux Kernel Module](s2/)
 3. Bash Programming
 4. Threads and Processes
+5. Inter-Process Communication
+6. Synchronization
+7. Deadlock
+8. Scheduling
 
 ## Final Project
 Students built a synchronized queue earlier. They use this with the sample client-server application,
