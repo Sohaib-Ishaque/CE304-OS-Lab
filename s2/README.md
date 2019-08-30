@@ -1,18 +1,24 @@
 # Linux Kernel Modules
+
+> Do you pine (to want or miss something or someone very much) for the days when men were men and wrote their own device drivers?
+> Linus Torvalds
+
 ## Requirements
-In order to compile linux device drivers on your system you must install linux-headers with the following command:
+To compile Linux device drivers on your system,
+you must install Linux'sheaders with the following command:
 
 ```sh
 sudo apt-get install linux-headers-$(uname -r)
 ```
 
-If you have many versions of GCC you can use the following command to specify it in build procedure.
+If you have many versions of GCC installed,
+you can use the following command to specify the exact version of GCC in the build procedure.
 
 ```sh
 make CC=/usr/bin/gcc
 ```
 
-After successful compaliation of kernel module you can insert it with the following command:
+After successful compilation of kernel module you can insert it with the following command:
 
 ```sh
 sudo insmod hello.ko
@@ -26,7 +32,7 @@ Then you can use `dmesg` to see the system logs.
 [106745.688081] Hello, I am loading
 ```
 
-At the end you can remove it and see its logs again.
+In the end, you can remove it and see its logs again.
 
 ```sh
 sudo rmmod hello
