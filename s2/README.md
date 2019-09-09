@@ -27,6 +27,13 @@ sudo insmod hello.ko
 # sudo modprobe hello
 ```
 
+But before that you can see the module information with the following command:
+
+```sh
+modinfo hello.ko
+# why we can gather module information from its binary?
+```
+
 Then you can use `dmesg` to see the system logs.
 
 ```
