@@ -23,6 +23,8 @@ After successful compilation of kernel module you can insert it with the followi
 
 ```sh
 sudo insmod hello.ko
+# modprobe is a clever command that parses the modules.dep file in order to load dependencies first
+# sudo modprobe hello
 ```
 
 Then you can use `dmesg` to see the system logs.
