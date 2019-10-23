@@ -27,8 +27,12 @@ int main(int argc, char *argv[]) {
     exit(EXIT_FAILURE);
   } else if (pid == 0) { // child process
     printf("child has x = %d\n", ++x);
+    exit(-12);
   } else { // parent process
     printf("parent has x = %d\n", --x);
+    int sts;
+    wait(&sts);
+    printf("child is dead (%d)\n", WEXITSTATUS(sts));
   }
   exit(EXIT_SUCCESS);
 }
