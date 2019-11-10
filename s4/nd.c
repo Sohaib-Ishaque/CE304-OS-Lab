@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 /*
  * here we are going to see a normal distribution from binomial distribution for a large n
@@ -12,6 +13,10 @@ int main() {
   int n;
   int i;
   int his[25];
+
+  // Use current time as seed for random generator 
+  srand(time(0));
+ 
   for (i = 0; i < 25; i++) {
     his[i] = 0;
   }
