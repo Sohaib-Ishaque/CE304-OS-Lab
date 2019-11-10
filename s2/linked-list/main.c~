@@ -32,13 +32,13 @@ int simple_init(void)
 
     struct birthday *ptr;
     list_for_each_entry(ptr,&birthday_list,list){
-        printk(KERN_INFO "%d/%d/%d\n", ptr->year, ptr->month, ptr->day);
+        printk(KERN_INFO "%d\n",ptr->day);
         /*on each iteration ptr points to the next birthday struct*/
     }
 
 
     printk(KERN_INFO "Loading Module\n");
-	return 0;
+return 0;
 }
 /* this function is called when the module is removed*/
 void simple_exit(void)
