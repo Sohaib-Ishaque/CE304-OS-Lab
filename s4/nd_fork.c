@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <time.h>
 
 /*
  * here we are going to see a normal distribution from binomial distribution for a large n
@@ -22,7 +23,7 @@ int main() {
   scanf("%d", &n);
   for (i = 0; i < n; i += k) {
     for (j = 0; j < k; j++) {
-      srand(i + j);
+      srand(i + j + time(0));
       pid_t pid = fork();
       if (pid == 0) {
         int ret = gen();
