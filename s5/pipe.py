@@ -10,20 +10,23 @@
 import os
 
 
-def child(n, pipeout):
+def child(n, w):
     print('I am Child')
-    f = os.fdopen(pipeout, 'w')
-    f.write('hello\n')
+    f = os.fdopen(w, 'w')
+    # the old way
+    f.write('hello %d\n' % (n) )
+    # the new way
+    f.write(f'hello {n}\n')
 
 
 def parent():
-    pipein, pipeout = os.pipe()
+    r, w = os.pipe()
     n = 10
     if os.fork() == 0:
-        child(n, pipeout)
+        child(n, w)
     else:
         print('I am Parent')
-        f = os.fdopen(pipein, 'r')
+        f = os.fdopen(r, 'r')
         print(f.readline())
 
 
