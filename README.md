@@ -12,6 +12,7 @@ Operating Systems Laboratory Materials. In this course we try to do some C and s
 6. Synchronization
 7. Deadlock
 8. Scheduling
+9. OpenMP
 
 ## Final Project
 Students built a synchronized queue earlier. They use this with the sample client-server application,
